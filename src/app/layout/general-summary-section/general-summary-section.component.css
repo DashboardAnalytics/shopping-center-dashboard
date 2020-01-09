@@ -1,0 +1,26 @@
+.item-col {
+    margin: 10px 20px 10px 20px;
+    -webkit-box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75);
+    -moz-box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75);
+    box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75);
+}
+.row {
+    margin-top: 20px;
+}
+.container{
+    height: 1200px;
+}
+.line-spinner-chart{
+    height: 320px !important;
+}
+.line-spinner-chart ngx-spinner p{
+    margin-top: 50px;
+}
+.line-spinner-chart-resume{
+    height: 300px !important;
+}
+.line-spinner-chart-resume ngx-spinner p{
+    margin-top: 120px;
+}
+
+

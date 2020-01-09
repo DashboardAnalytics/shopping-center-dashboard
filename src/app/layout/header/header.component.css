@@ -1,0 +1,36 @@
+nav{
+    background-color: #bccee3;
+}
+img{
+    max-width: 100%;
+}
+.logo{
+    max-width: 100px;
+    text-align: center;
+}
+.specific-logo{
+    max-width: 80px;
+}
+.specific-logo a{
+    margin: 0;
+    padding: 0;
+}
+.logo a{
+    margin: 0;
+    padding: 0;
+}
+a fa-icon{
+    margin-right: 10px;
+}
+.go-back-icon{
+    margin-left: 5px;
+    margin-right: 0 !important;
+}
+li p {
+    font-weight: bold;
+    margin-bottom: 0;
+    color: rgb(91, 91, 92) !important;
+}
+li p:hover{
+    color: rgb(91, 91, 92) !important;
+}

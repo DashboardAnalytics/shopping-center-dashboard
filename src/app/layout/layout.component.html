@@ -1,0 +1,15 @@
+<app-header *ngIf="!isFetching && isLoggedIn" [malls]=loadedMalls></app-header>
+<div *ngIf="!isFetching && isLoggedIn" class="container-fluid">
+    <!--Layouts Component begins -->
+    <router-outlet></router-outlet>
+    <!--Layouts Component begins -->
+</div>
+<ngx-spinner *ngIf="isFetching && isLoggedIn" bdOpacity=0.9 bdColor="#333" size="medium" color="#fff" type="ball-atom"
+    [fullScreen]="true">
+    <p style="color: white">Cargando Shopping Centers... </p>
+</ngx-spinner>
+<div class="container">
+    <div class="row">
+        <h2 *ngIf="!isLoggedIn"><fa-icon [icon]="faShieldAlt"></fa-icon> Access Denied! You must login first.</h2>
+    </div>
+</div>

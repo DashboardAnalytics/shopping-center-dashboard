@@ -1,0 +1,96 @@
+<!--Principal Line Charts Begins -->
+<div class="row">
+    <div class="col">
+        <app-line-chart *ngIf="!isFetchingGeneralVisits" title="Visitas" subtitle="Número de visitas a tienda por día"
+            [generalVisits]="generalVisits">
+        </app-line-chart>
+        <div *ngIf="isFetchingGeneralVisits" class="line-spinner-chart">
+            <ngx-spinner bdOpacity=0.9 bdColor="rgba(51,51,51,0)" size="large" color="#535353" type="ball-running-dots"
+                [fullScreen]="false">
+                <p style="color: #535353"> Obteniendo número de visitas a tienda por día... </p>
+            </ngx-spinner>
+        </div>
+
+    </div>
+</div>
+<!--Principal Line Charts Ends -->
+
+<!--Resume Area Begins -->
+<div class="row">
+    <!--Resume Area Titles Begins -->
+    <div class="col-3">
+        <h5>Top tiendas</h5>
+    </div>
+    <div class="col">
+        <h5>Periodos con mayor número de visitas</h5>
+    </div>
+    <!--Resume Area Titles Ends -->
+</div>
+<div class="row">
+    <!--Top k Visited Stores Ranking Begins -->
+    <div class="col item-col">
+        <app-top-k *ngIf="!isFetchingTopK" title="Top visitas" [topStore]="topStores"></app-top-k>
+        <div *ngIf="isFetchingTopK" class="line-spinner-chart-resume">
+            <ngx-spinner bdOpacity=0.9 bdColor="rgba(51,51,51,0)" size="large" color="#535353"
+                type="ball-clip-rotate-pulse" [fullScreen]="false">
+                <p style="color: #535353">Obteniendo Top tiendas...</p>
+            </ngx-spinner>
+        </div>
+    </div>
+    <!--Top k Visited Stores Ranking Ends -->
+    <!--Week Visits Line Chart Begins -->
+    <div class="col item-col">
+        <h6>Semana</h6>
+        <app-line-chart *ngIf="!isFetchingWeekVisits" [generalVisits]="weekVisits"></app-line-chart>
+        <div *ngIf="isFetchingWeekVisits" class="line-spinner-chart-resume">
+            <ngx-spinner bdOpacity=0.9 bdColor="rgba(51,51,51,0)" size="large" color="#535353"
+                type="ball-clip-rotate-pulse" [fullScreen]="false">
+                <p style="color: #535353">Obteniendo semanas...</p>
+            </ngx-spinner>
+        </div>
+    </div>
+    <!--Week Visits Line Chart Ends -->
+    <!--Day Visits Bar Chart Begins -->
+    <div class="col item-col">
+        <h6>Día</h6>
+        <app-bar-chart *ngIf="!isFetchingDayVisits" [generalVisits]="dayVisits"></app-bar-chart>
+        <div *ngIf="isFetchingDayVisits" class="line-spinner-chart-resume">
+            <ngx-spinner bdOpacity=0.9 bdColor="rgba(51,51,51,0)" size="large" color="#535353"
+                type="ball-clip-rotate-pulse" [fullScreen]="false">
+                <p style="color: #535353">Obteniendo días...</p>
+            </ngx-spinner>
+        </div>
+    </div>
+    <!--Day Visits Bar Chart Ends -->
+    <!--Hour Visits Line Chart Begins -->
+    <div class="col item-col">
+        <h6>Hora</h6>
+        <app-line-chart *ngIf="!isFetchingHourVisits" [generalVisits]="hourVisits"></app-line-chart>
+        <div *ngIf="isFetchingHourVisits" class="line-spinner-chart-resume">
+            <ngx-spinner bdOpacity=0.9 bdColor="rgba(51,51,51,0)" size="large" color="#535353"
+                type="ball-clip-rotate-pulse" [fullScreen]="false">
+                <p style="color: #535353">Obteniendo horas...</p>
+            </ngx-spinner>
+        </div>
+    </div>
+    <!--Hour Visits Line Chart Ends -->
+</div>
+<!--Resume Area Ends -->
+
+<!--Specific Analysis Area Begins 
+<div class="row">
+    <div class="col">
+        <ul class="nav nav-tabs nav-fill">
+            <li *ngFor="let area of specificAnalysisResultsAreas" class="nav-item">
+                <a class="nav-link" routerLink="{{area.url}}" routerLinkActive="active">
+                    {{area.name}}
+                </a>
+            </li>
+        </ul>
+    </div>
+</div>
+Specific Analysis Area Ends 
+
+Specific Analysis Charts Begins 
+<router-outlet></router-outlet>
+Specific Analysis Charts Ends -->

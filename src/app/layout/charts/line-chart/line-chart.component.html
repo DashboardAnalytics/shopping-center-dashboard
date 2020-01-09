@@ -1,0 +1,9 @@
+<div class="title-download">
+    <h6>{{title}}</h6>
+    <p>{{subtitle}}</p>
+</div>
+<div class="chart-wrapper">
+    <canvas baseChart height="320px" [datasets]="lineChartData" [labels]="lineChartLabels" [options]="lineChartOptions"
+        [colors]="lineChartColors" [legend]="lineChartLegend" [chartType]="lineChartType" [plugins]="lineChartPlugins">
+    </canvas>
+</div>

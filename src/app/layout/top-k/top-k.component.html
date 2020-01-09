@@ -1,0 +1,12 @@
+<ul class="list-group">
+    <div class="title-download">
+        <h6>{{title}}</h6>
+        <a class="btn" href=""><fa-icon [icon]="faDownload" size="2x"></fa-icon></a>
+    </div>
+    <li 
+        class="list-group-item d-flex justify-content-between align-items-center"
+        *ngFor="let store of topStore,let i = index">
+        {{store.store}}
+        <span class="badge badge-primary badge-pill">{{store.total}}</span>
+    </li>
+</ul>

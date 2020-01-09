@@ -1,0 +1,96 @@
+<nav class="navbar navbar-expand-sm bg-light navbar-light justify-content-end" *ngIf="!isFetchingStores">
+    <!-- Brand -->
+    <div class="logo">
+        <a class="navbar-brand nav-link" href="#">
+            <img src="../../assets/images/logo_cencosud.png" alt="Company Logo." class="img-fluid">
+        </a>
+    </div>
+
+
+    <!-- Links -->
+    <ul class="navbar-nav mr-auto">
+        <li class="nav-item">
+            <div ngbDropdown class="d-inline-block" *ngIf="!isMallSelected">
+                <a class="btn nav-link" id="tiendas" ngbDropdownToggle>Shopping Centers</a>
+                <div ngbDropdownMenu aria-labelledby="tiendas">
+                    <a class="btn" ngbDropdownItem (click)="onSelectMall($event.target.innerText)"
+                        *ngFor="let mall of malls,let i = index">
+                        <fa-icon [icon]="faBuilding"></fa-icon>{{mall.name}}
+                    </a>
+                </div>
+            </div>
+        </li>
+        <li class="nav-item">
+            <div class="d-inline-block">
+                <p class="nav-link">{{selectedMallName}}</p>
+            </div>
+        </li>
+        <li class="nav-item" *ngIf="isMallSelected">
+            <div ngbDropdown class="d-inline-block">
+                <a class="btn nav-link" id="tiendas" ngbDropdownToggle>Tiendas</a>
+                <div ngbDropdownMenu aria-labelledby="tiendas">
+                    <a class="btn" ngbDropdownItem (click)="onSelectStore($event.target.innerText)"
+                        *ngFor="let store of stores,let i = index"
+                        [routerLink]="['/home',selectedMallName, selectedStoreName ]"
+                        routerLinkActive="router-link-active">
+                        <fa-icon [icon]="faStoreAlt"></fa-icon>{{store.name}}
+                    </a>
+                </div>
+            </div>
+        </li>
+        <li class="nav-item" *ngIf="isMallSelected">
+            <div ngbDropdown class="d-inline-block">
+                <a class="btn nav-link" id="tiendas" (click)="onSelectShoppingCenter()">
+                    Seleccionar Shopping Center <fa-icon class="go-back-icon" [icon]="faUndoAlt"></fa-icon>
+                </a>
+            </div>
+        </li>
+        <li class="nav-item">
+            <form class="form-inline">
+                <div class="form-group col">
+                    <div class="input-group">
+                        <input class="form-control" placeholder="yyyy-mm-dd" name="dp" [(ngModel)]="model" ngbDatepicker
+                            #d="ngbDatepicker">
+                        <div class="input-group-append">
+                            <button class="btn btn-outline-secondary calendar" (click)="d.toggle()" type="button">
+                                <fa-icon class=" calendar-icon" [icon]="faCalendarAlt"></fa-icon>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </li>
+    </ul>
+    <div *ngIf="isStoreSelected" class="specific-logo mr-auto">
+        <a class="navbar-brand nav-link" href="#">
+            <img [src]="logoLocation" alt="Logo de la cadena" class="img-fluid">
+        </a>
+    </div>
+    <ul class="navbar-nav">
+        <!-- Dropdown -->
+        <li ngbDropdown class="nav-item d-inline-block">
+            <a class="btn nav-link" id="dropdownForm1" ngbDropdownToggle>
+                <fa-icon [icon]="faUserCircle" size="2x"></fa-icon>{{userName}}
+            </a>
+            <div ngbDropdownMenu aria-labelledby="dropdownForm1">
+                <!-- <div class="dropdown-divider"></div>  -->
+                <button (click)=onSingOut() ngbDropdownItem>Cerrar Sesión <fa-icon [icon]="faSignOutAlt"></fa-icon>
+                    </button>
+            </div>
+        </li>
+        <li>
+            <a href="" class="btn nav-link">
+                <fa-icon [icon]="faBell" size="2x"></fa-icon>
+            </a>
+        </li>
+        <li>
+            <a href="" class="btn nav-link">
+                <fa-icon [icon]="faComment" size="2x"></fa-icon>
+            </a>
+        </li>
+    </ul>
+</nav>
+<ngx-spinner *ngIf="isFetchingStores" bdOpacity=0.9 bdColor="#333" size="medium" color="#fff" type="ball-atom"
+    [fullScreen]="true">
+    <p style="color: white">Cargando tiendas... </p>
+</ngx-spinner>
